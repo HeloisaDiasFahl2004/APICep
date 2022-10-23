@@ -4,18 +4,19 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace APICep.Controllers
 {
-    [Route("[controller]")]
+    [Route("address/[controller]")]
     [ApiController]
     public class AddressController : ControllerBase
     {
-        public AddressController()
+        private readonly AddressService _addressService;
+        public AddressController(AddressService addressService)
         {
-            //vazio pois no método getAdress já tem a requisição HTTP
+            _addressService = addressService;
         }
         [HttpGet("{cep}")]
         public ActionResult<string> GetAddress(string cep)
         {
-            var address = new AddressService().GetAddress(cep);
+            var address = _addressService.GetAddress(cep);
 
             if (address == null) return NotFound();
 
