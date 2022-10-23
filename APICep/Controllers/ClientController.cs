@@ -1,9 +1,7 @@
 ﻿using APICep.Models;
 using APICep.Service;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Net;
 
 namespace APICep.Controllers
 {
@@ -35,7 +33,7 @@ namespace APICep.Controllers
         [HttpPost]
         public ActionResult<Client> Post(Client client)
         {
-              Address address = _addressService.Create(client.Cep);//pega o objeto address
+            Address address = _addressService.Create(client.Cep);//pega o objeto address
             client.Cep = address;//insere o address e já traz de volta
             _clientService.Create(client);
             return CreatedAtRoute("GetClient", new { id = client.Id.ToString() }, client);
