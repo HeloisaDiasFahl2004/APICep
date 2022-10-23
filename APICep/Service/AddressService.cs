@@ -27,7 +27,6 @@ namespace APICep.Service
             StreamReader answerReader = new StreamReader(stream);
             string message = answerReader.ReadToEnd();
             return message;
-
         }
         public Address Create(Address address) //método utilizado para executar uma requisição web
         {
