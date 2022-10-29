@@ -22,6 +22,7 @@ namespace APICep.Service
         }
         public List<Client> GetAll() => _clients.Find<Client>(client => true).ToList();
         public Client GetById(string id) => _clients.Find<Client>(client => client.Id == id).FirstOrDefault();
+
         //public Client GetName(string name) => _clients.Find<Client>(client => client.Name == name).FirstOrDefault();
         // public Client GetCep(string cep) => _clients.Find<Client>(client => client.Cep.Id == cep).FirstOrDefault();
         //public void Update(string id, Client clientIn) => _clients.ReplaceOne(client => client.Id == id, clientIn);
